@@ -1,0 +1,31 @@
+.center{
+    text-align: center;
+}
+
+.center-vertical{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.info{
+    margin-top: 2%;
+}
+
+button{
+    font-weight: bold;
+    background-color: #FFFF00;
+    border: none;
+    padding: 2% 3%;
+  }
+
+  button:hover{
+    background-color: black;
+    color: #FFFF00;
+    border: none;
+
+  }
+  button:focus{
+    background-color: black;
+    color: #FFFF00;
+    border: none;
+  }

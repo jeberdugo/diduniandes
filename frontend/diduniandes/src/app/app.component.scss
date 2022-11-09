@@ -1,0 +1,99 @@
+.main-card {
+    border-radius: 0px !important;
+    box-shadow: 0px 3px 6px #00000029;
+    background-color: white;
+    padding: 6% 5%;
+    margin-top: 4%;
+
+  }
+
+  .right{
+    text-align: right;
+  }
+
+  header{
+    margin-top: 5%;
+  }
+
+
+
+  mat-stepper{
+    background-color: #F5F5F5 !important;
+  }
+
+ 
+  
+  
+  ::ng-deep .mat-step-header .mat-step-icon {
+    background-color: rgb(168, 165, 165);
+    height: 60px;
+    width: 60px;
+    font-size: 50px ;
+    top:6px!important;
+    
+  }
+
+  ::ng-deep .mat-step-icon .mat-icon{
+    transform: scale(2);
+  } 
+
+  ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+    margin: 3% 10%;
+  }
+  
+  ::ng-deep .mat-horizontal-stepper-header {
+    height: 72px !important;
+    padding: 0 10px !important;
+    .mat-stepper-horizontal-line {
+        top: 10px !important;
+    }
+    .mat-step-label {
+        position: fixed;
+        margin-top: 15px;
+        width: 200px !important;
+        white-space: pre-wrap;
+        text-align: center;
+    }
+    &::before {
+        width: 0;
+    }
+}
+.selectedIndex0 {
+}
+@for $i from 1 through 10 {
+    .selectedIndex#{$i} {
+        @extend .selectedIndex#{$i - 1};
+        ::ng-deep .mat-stepper-horizontal-line:nth-child(#{$i * 2}) {
+            border-top-width: 4px !important;
+            border-left-width: 10px;
+            border-top-color: yellow !important;
+        }
+    }
+}
+
+//before checked:
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-outer-circle {
+    border-color: green !important;
+}
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: green !important;
+}
+
+//after checked:
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked
+    .mat-radio-outer-circle {
+    border-color: #ff9800 !important;
+}
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked
+    .mat-radio-inner-circle {
+    background-color: #ff9800 !important;
+}
+
+
+::ng-deep.mat-stepper-horizontal-line {
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+  }
+

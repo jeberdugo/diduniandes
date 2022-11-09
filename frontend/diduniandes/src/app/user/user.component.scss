@@ -1,0 +1,92 @@
+.center{
+    text-align: center;
+}
+
+.center-vertical{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.info{
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.left{
+    text-align: left;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+#wallet{
+    margin: 0 15%;
+    border-radius: 15px;
+    padding: 2% 3%;
+    padding-bottom: 0;
+    box-shadow: 0px 3px 6px #00000029;
+
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+
+.zero{
+    margin-bottom: 0;
+    margin-top: 10px;
+
+}
+
+button{
+    margin-top: 5%;
+    font-weight: bold;
+    background-color: #FFFF00;
+    border: none;
+    padding: 1% 2%;
+  }
+
+  .wallet{
+    display:block;
+  }
+  .sel-user{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sel-user:hover{
+    background-color: #57585c27 ;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+  }
+  .selected{
+    background-color: #57585c27  ;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+  }
+
+  .icon{
+    height: auto;
+    width: 100%;
+    max-width: 70px;
+    max-height: 70px;
+    border-radius: 10px;
+  }
+
+  button:hover{
+    background-color: black;
+    color: #FFFF00;
+    border: none;
+
+  }
+  button:focus{
+    background-color: black;
+    color: #FFFF00;
+    border: none;
+  }

@@ -1,0 +1,78 @@
+<div class="container" id="main">
+  <header>
+    <div class="row">
+      <div class="col-12 right">
+        <img src="assets/uandes.png" alt="">
+        <img src="assets/bc.png" alt="" srcset="">
+      </div>
+    </div>
+  </header>
+  <mat-stepper
+    [class]="
+      'selectedIndex' +
+      stepper.selectedIndex +
+      ' mat-stepper-label-position-bottom'
+    "
+    labelPosition="bottom"
+    #stepper
+  >
+    <ng-template #stepperIcon>
+      <mat-icon>info</mat-icon>
+    </ng-template>
+    <mat-step>
+      <div class="main-card">
+        <app-info></app-info>        
+      </div>
+    </mat-step>
+    <ng-template #stepperIcon>
+      <mat-icon>account_balance_wallet</mat-icon>
+    </ng-template>
+    <mat-step>
+      <div class="main-card">
+        <app-wallet></app-wallet>        
+      </div>
+    </mat-step>
+    <ng-template #stepperIcon>
+      <mat-icon>person</mat-icon>
+    </ng-template>
+    <mat-step>
+      <div class="main-card">
+        <app-user></app-user>        
+      </div>
+    </mat-step>
+    <ng-template #stepperIcon>
+      <mat-icon>list_alt</mat-icon>
+    </ng-template>
+    <mat-step>
+      <div class="main-card">
+        <app-service></app-service>        
+      </div>
+    </mat-step>
+    <ng-template #stepperIcon>
+      <mat-icon>done</mat-icon>
+    </ng-template>
+    <mat-step>
+      <app-done></app-done>
+    </mat-step>
+    <ng-template matStepperIcon="number" let-index="index">
+      <ng-container
+        [ngTemplateOutlet]="matStepperIcons && matStepperIcons[index]"
+      ></ng-container>
+    </ng-template>
+    <ng-template matStepperIcon="edit" let-index="index">
+      <ng-container
+        [ngTemplateOutlet]="matStepperIcons && matStepperIcons[index]"
+      ></ng-container>
+    </ng-template>
+    <ng-template matStepperIcon="done" let-index="index">
+      <ng-container
+        [ngTemplateOutlet]="matStepperIcons && matStepperIcons[index]"
+      ></ng-container>
+    </ng-template>
+    <ng-template matStepperIcon="error" let-index="index">
+      <ng-container
+        [ngTemplateOutlet]="matStepperIcons && matStepperIcons[index]"
+      ></ng-container>
+    </ng-template>
+  </mat-stepper>
+</div>
