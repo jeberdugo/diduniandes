@@ -1,0 +1,216 @@
+.center{
+    text-align: center;
+}
+
+.center-vertical{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.info{
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.left{
+    text-align: left;
+}
+
+.middle{
+    margin-bottom: 0;
+}
+.bold{
+    font-weight: bold;
+}
+
+
+hr{
+    margin-top: 3px;
+    margin-bottom: 2px;
+}
+.inf{
+
+    margin-bottom: 0;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+
+.sng{
+    
+    border-top: solid 1px #686868a2;
+}
+
+.zero{
+    margin-bottom: 0;
+    margin-top: 10px;
+
+}
+
+button{
+    font-weight: bold;
+    background-color: #FFFF00;
+    border: none;
+    margin-top: 15px;
+  }
+
+  .wallet{
+    display:block;
+  }
+  .light{
+    font-weight: lighter;
+  }
+
+  .icon{
+    height: auto;
+    width: 100%;
+    max-width: 70px;
+    max-height: 70px;
+    border-radius: 10px;
+  }
+
+  button:hover{
+    background-color: black;
+    color: #FFFF00;
+    border: none;
+
+  }
+  button:focus{
+    background-color: black;
+    color: #FFFF00;
+    border: none;
+  }
+  .pcasos{
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+  .pcasos2{
+    margin-bottom: 8px;
+  }
+
+  .info-caso{
+    margin: 15px 35%;
+    border-radius: 15px;
+    display: block;
+    padding: 10px 2%;
+    padding-bottom: 0;
+    box-shadow: 0px 3px 6px #00000029;
+  }
+  .info-caso2{
+    margin: 15px 2%;
+    border-radius: 15px;
+    display: block;
+    padding: 10px 2%;
+    padding-bottom: 0;
+    box-shadow: 0px 3px 6px #00000029;
+  }
+  .fin{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #casos{
+    margin-top: 0;
+    margin-bottom: 0;
+    
+  }
+  .casos{
+    box-shadow: 0px 3px 6px #00000029;
+  }
+  .casos:hover{
+    background-color: #57585c27;
+   
+  }
+
+  @media screen and (min-width: 720px) {
+    .casos{
+        margin: 10px 20%;
+    }
+  }
+  @media screen and (max-width: 719px) {
+    .casos{
+        margin: 10px 0;
+    }
+  }
+
+  .step {
+  
+    padding: 10px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+    background-color: cream;
+  }
+  
+  .v-stepper {
+    position: relative;
+  /*   visibility: visible; */
+  }
+  
+  
+  /* regular step */
+  .step .circle {
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 100%;
+    width: 26px;    /* +6 for border */
+    height: 26px;
+    display: inline-block;
+  }
+  
+  .step .line {
+      top: 23px;
+    left: 12px;
+  /*   height: 120px; */
+    height: 100%;
+    visibility: hidden;
+      
+      position: absolute;
+      border-left: 3px solid black;
+  }
+  
+  .step.completed .circle {
+    visibility: visible;
+    background-color: #FFFF00;
+    border-color: #FFFF00;
+  }
+  
+
+  
+  .step.active .circle {
+  visibility: visible;
+   border-color: #FFFF00;
+  }
+  
+  .step.empty .circle {
+      visibility: hidden;
+  }
+  
+
+  
+  
+  .step:last-child .line {
+    border-left: 3px solid white;
+    z-index: -1; /* behind the circle to completely hide */
+  }
+
+  .circle{
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .content {
+    margin-left: 10px;
+    display: inline-block;
+    font-weight: lighter;
+    font-size: small;
+
+  }
+  .container2 {
+    width: 100%;
+  }
+  
+    
+  

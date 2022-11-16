@@ -1,6 +1,309 @@
 <div [ngSwitch]="stateServ">
-    <div *ngSwitchCase="'list'">...</div>
+  <div *ngSwitchCase="'list'">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="center">Escoge el servicio</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p class="info">
+          Estos son los servicios a los que puede acceder {{ this.user }} a
+          través de su identidad descentralizada:
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="card casos" (click)="changeStateServ('cuentaAhorros')">
+            <div class="row">
+              <div class="col-12 center">
+                <p class="bold pcasos">Crea una cuenta de ahorros</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 center">
+                <p class="light pcasos2">Ábrela por Internet sin desplazarte</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card casos" (click)="changeStateServ('tarjCred')">
+            <div class="row">
+              <div class="col-12 center">
+                <p class="bold pcasos">Solicita una tarjeta de crédito</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 center">
+                <p class="light pcasos2">
+                  Te ofrecemos una gran variedad de tarjetas de acuerdo a tu
+                  perfil
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card casos" (click)="changeStateServ('fondInv')">
+            <div class="row">
+              <div class="col-12 center">
+                <p class="bold pcasos">Abre un fondo de inversión</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 center">
+                <p class="light pcasos2">
+                  Invierte tus ahorros con total seguridad
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'cuentaAhorros'">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="center">Crear una cuenta de ahorros</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p class="info">
+          Estas listo para abrir tu cuenta de ahorros a través de tu identidad
+          digital descentralizada
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 center">
+          <div class="card info-caso">
+            <div class="row">
+              <div class="col-12">
+                <p class="bold left inf">Te conectarás con</p>
+              </div>
+            </div>
+            <hr />
+            <div class="row fin">
+              <div class="col-2">
+                <img src="assets/bank.png" alt="" />
+              </div>
+              <div class="col-10 center-vertical">
+                <p class="light left middle">Banco</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 center">
+          <div class="card info-caso">
+            <div class="row">
+              <div class="col-12">
+                <p class="bold left inf">Necesitas presentar</p>
+              </div>
+            </div>
+            <hr />
+            <div class="row fin">
+              <div class="col-2">
+                <img src="assets/cc.png" alt="" />
+              </div>
+              <div class="col-10 center-vertical">
+                <p class="light left middle">Cédula</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 center">
+          <div class="card info-caso">
+            <div class="row">
+              <div class="col-12">
+                <p class="bold left inf">Recibirás</p>
+              </div>
+            </div>
+            <hr />
+            <div class="row fin">
+              <div class="col-2">
+                <img src="assets/tarjdeb.png" alt="" />
+              </div>
+              <div class="col-10 center-vertical">
+                <p class="light left middle">Tarjeta débito</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 center">
+          <button
+            type="button"
+            class="btn btn-warning"
+            (click)="changeStateServ('cuentaAhorros2')"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'cuentaAhorros2'">
+    <div class="row">
+      <div class="col-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 center">
+              <div class="card info-caso2">
+                <div class="row">
+                  <div class="col-12">
+                    <p class="bold left inf">Estas interactuando con</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="row fin">
+                  <div class="col-2">
+                    <img src="assets/bank.png" alt="" />
+                  </div>
+                  <div class="col-10 center-vertical">
+                    <p class="light left middle">Banco</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 center">
+              <div class="card info-caso2">
+                <div class="row">
+                  <div class="col-12">
+                    <p class="bold left inf">Necesitas presentar</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="row fin">
+                  <div class="col-2">
+                    <img src="assets/cc.png" alt="" />
+                  </div>
+                  <div class="col-10 center-vertical">
+                    <p class="light left middle">Cédula</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 center">
+              <div class="card info-caso2">
+                <div class="row">
+                  <div class="col-12">
+                    <p class="bold left inf">Sigue los siguientes pasos</p>
+                  </div>
+                </div>
+                <hr />
+                <div class="container2">
+                  <!-- completed -->
+                  <div class="step" [ngClass]="{ active: stepperState === 1, completed: stepperState > 1  }">
+                    <div class="v-stepper">
+                      <div class="circle">1</div>
+                      <div class="line"></div>
+                    </div>
 
-    
-    
+                    <div class="content">Conéctate con el banco</div>
+                  </div>
+
+                  <!-- active -->
+                  <div class="step" [ngClass]="{ active: stepperState === 2, completed: stepperState > 2  }">
+                    <div class="v-stepper">
+                      <div class="circle"> 2 </div>
+                      <div class="line"></div>
+                    </div>
+
+                    <div class="content">Presenta tu cédula</div>
+                  </div>
+
+                  <!-- empty -->
+                  <div class="step " [ngClass]="{ active: stepperState === 3, completed: stepperState > 3  }">
+                    <div class="v-stepper">
+                      <div class="circle">3</div>
+                      <div class="line"></div>
+                    </div>
+
+                    <div class="content">Autoriza el uso de tus datos</div>
+                  </div>
+
+                  <!-- regular -->
+                  <div class="step" [ngClass]="{ active: stepperState === 4, completed: stepperState > 4  }">
+                    <div class="v-stepper">
+                      <div class="circle">4</div>
+                      <div class="line"></div>
+                    </div>
+
+                    <div class="content">Recibe la confirmación del banco</div>
+                  </div>
+                  <div class="step" [ngClass]="{ active: stepperState === 5, completed: stepperState > 5  }">
+                    <div class="v-stepper">
+                      <div class="circle">5</div>
+                      <div class="line"></div>
+                    </div>
+
+                    <div class="content">Recibe tu tarjeta débito</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="center">Crear una cuenta de ahorros</h1>
+          </div>
+        </div>
+            <div *ngIf="stepperState === 1">
+              <div class="row">
+                <div class="col-12">
+                  <p class="info">
+                    Para crear una conexión segura con el banco, debes escanear el
+                    siguiente código
+                  </p>
+                </div>
+              </div>
+              <div class="row center">
+                <qrcode [qrdata]="qrdata" [width]="256" [scale]="100" [errorCorrectionLevel]="'H'"></qrcode>
+              </div>
+              <div class="row">
+                <div class="col-12 center">
+                  <button type="button" class="btn btn-warning" (click)="changeStepperState(2)">Siguiente</button>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="stepperState === 2">
+              <div class="row">
+                <div class="col-12">
+                  <p class="info">
+                    Para crear una conexión segura ebes escanear el
+                    siguiente código
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 center">
+                  <button type="button" class="btn btn-warning" (click)="changeStepperState(3)">Siguiente</button>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
 </div>

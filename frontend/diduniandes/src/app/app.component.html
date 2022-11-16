@@ -37,7 +37,7 @@
     </ng-template>
     <mat-step>
       <div class="main-card">
-        <app-user></app-user>        
+        <app-user (propagar)="this.user = $event"></app-user>        
       </div>
     </mat-step>
     <ng-template #stepperIcon>
@@ -45,7 +45,7 @@
     </ng-template>
     <mat-step>
       <div class="main-card">
-        <app-service></app-service>        
+        <app-service [user]="this.user"></app-service>        
       </div>
     </mat-step>
     <ng-template #stepperIcon>
