@@ -109,5 +109,8 @@
       }
     }
   },
-  "defaultProject": "diduniandes"
+  "defaultProject": "diduniandes",
+  "cli": {
+    "analytics": "1808af3b-3dfb-410e-93c4-8401a769c5f4"
+  }
 }
