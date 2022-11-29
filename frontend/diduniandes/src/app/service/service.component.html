@@ -280,7 +280,15 @@
                 </div>
               </div>
               <div class="row center">
-                <qrcode [qrdata]="qrdata" [width]="256" [scale]="100" [errorCorrectionLevel]="'H'"></qrcode>
+                <button (click)="createDataService('crearCuentaAhorros')"> Generar prueba con código QR  </button>
+                <ng-container *ngIf = "completed; else notCompleted">
+                    <ng-container *ngIf="qrdata !== 'Initial QR code data string'">
+                      <qrcode [qrdata]="qrdata" [width]="512" [scale]="100" [errorCorrectionLevel]="'H'"></qrcode>
+                    </ng-container>
+                </ng-container>
+                <ng-template #notCompleted>
+                  <div class="animationloading"></div>
+                </ng-template>
               </div>
               <div class="row">
                 <div class="col-12 center">
