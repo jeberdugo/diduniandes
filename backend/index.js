@@ -4,6 +4,9 @@ const getRawBody = require('raw-body')
 
 const app = express();
 const port = 8080;
+const cors = require('cors');
+const originsAllowed = ['http://localhost:4200', 'http://localhost:8080'];
+app.use(cors({origin: originsAllowed}));
 app.use(express.static('static'));
 
 app.get("/api/sign-in", (req, res) => {
@@ -25,12 +28,15 @@ app.listen(port, () => {
 // Create a map to store the auth requests and their session IDs
 const requestMap = new Map();
 
-// GetQR returns auth request
+// GetQR returns auth reques
 async function GetAuthRequest(req,res) {
 	console.log('Enter in AuthRequestMethod');
-
+	console.log(req);
+	const caseOfUse = req.originalUrl.split('=')[1];
+	console.log('Params:', caseOfUse);
 	// Audience is verifier id
-	const hostUrl = "https://01dc-186-84-135-86.ngrok.io";
+	const proxyHeroku = "https://radiant-harbor-95836.herokuapp.com/"
+	const hostUrl = proxyHeroku+"https://17d6-186-84-135-86.ngrok.io";
 	const sessionId = 1;
 	const callbackURL = "/api/callback"
 	const audience = "117fsb3hktLw8ie9E6Qj9kfgRHXhLxq9XYaedsJdGU"
@@ -51,9 +57,57 @@ async function GetAuthRequest(req,res) {
 	request.thid = '7f38a193-0918-4a48-9fac-36adfdb8b542';
 
 	// Add request for a specific proof
-	//Age
-	/*
-	const proofRequest  = {
+	//Credit card ID Cuenta
+	/*const proofRequest = {
+		id: 1, // request id
+		circuit_id: 'credentialAtomicQuerySig',
+		rules: {
+		  query: {
+			allowedIssuers: ['*'], // ID of the trusted issuers
+			schema: {
+			  type: 'CuentaAhorrosBancolombia',
+			  url: 'https://platform-test.polygonid.com/claim-link/7721dfb0-b142-4e52-a1b9-24d7f994a185',
+			},
+			req: {
+			  IDCuenta: {
+				$lt: 999999999999999999, 
+			  },
+			},
+		  },
+		},
+	  };
+	console.log('ProofRequest created');
+	const scope = request.body.scope ?? [];
+	request.body.scope = [...scope, proofRequest];*/
+
+	if (caseOfUse==="crearCuentaAhorros")
+	{
+		console.log('Caso cuenta de ahorros saldo mayor a 50.000.000');
+		//Credit card Saldo
+		const proofRequest = {
+			id: 1, // request id
+			circuit_id: 'credentialAtomicQuerySig',
+			rules: {
+			query: {
+				allowedIssuers: ['*'], // ID of the trusted issuers
+				schema: {
+				type: 'CuentaAhorrosBancolombia',
+				url: 'https://s3.eu-west-1.amazonaws.com/polygonid-schemas/293f43bf-bc85-4bfd-991c-ec9e8299a4aa.json-ld',
+				},
+				req: {
+				Saldo: {
+					$gt: 50000000, 
+				},
+				},
+			},
+			},
+		};
+		console.log('ProofRequest created');
+		const scope = request.body.scope ?? [];
+		request.body.scope = [...scope, proofRequest];
+	}
+
+	/*const proofRequest  = {
 		id: 1, // request id
 		circuit_id: 'credentialAtomicQuerySig',
 		rules: {
@@ -64,6 +118,11 @@ async function GetAuthRequest(req,res) {
 				url: 'https://schema.polygonid.com/jsonld/dao.json-ld',
 			}
 			},
+			req: {
+				role: {
+				  $eq: 1, // the role must be 1
+				},
+			  },
 		},
 		};
 	
@@ -104,8 +163,6 @@ async function GetAuthRequest(req,res) {
 
 // Callback verifies the proof after sign-in callbacks
 async function Callback(req,res) {
-	console.log(req);
-	console.log(res);
 
 	// Get session ID from request
 	const sessionId = req.query.sessionId;
@@ -116,8 +173,6 @@ async function Callback(req,res) {
 
 	// fetch authRequest from sessionID
 	const authRequest = requestMap.get(`${sessionId}`);
-	console.log(requestMap);
-	console.log(authRequest);
 		
 	// Locate the directory that contains circuit's verification keys
 	const verificationKeyloader = new loaders.FSKeyLoader('./keys');
@@ -126,7 +181,7 @@ async function Callback(req,res) {
 	console.log('Done');
 
 	// Add Polygon Mumbai RPC node endpoint - needed to read on-chain state and identity state contract address
-	const ethStateResolver = new resolver.EthStateResolver('https://polygon-mumbai.g.alchemy.com/v2/NEJA3Eag1uULw6Gdq7b6f2Fe9Nk5G_mE', '0xb8a86e138C3fe64CbCba9731216B1a638EEc55c8');
+	const ethStateResolver = new resolver.EthStateResolver('https://polygon-mumbai.g.alchemy.com/v2/NEJA3Eag1uULw6Gdq7b6f2Fe9Nk5G_mE', '0x251dcd7De5f5c8dc0b83F356970F49346692447B');
 
 	console.log('Done ethStateResolver');
 	console.log(ethStateResolver);
@@ -134,7 +189,7 @@ async function Callback(req,res) {
 	// EXECUTE VERIFICATION
 	const verifier = new auth.Verifier(
 	verificationKeyloader,
-	sLoader, ethStateResolver,
+	sLoader, ethStateResolver
 );
 
 
