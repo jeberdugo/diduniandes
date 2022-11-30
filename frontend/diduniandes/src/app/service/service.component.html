@@ -283,7 +283,9 @@
                 <button (click)="createDataService('crearCuentaAhorros')"> Generar prueba con código QR  </button>
                 <ng-container *ngIf = "completed; else notCompleted">
                     <ng-container *ngIf="qrdata !== 'Initial QR code data string'">
-                      <qrcode [qrdata]="qrdata" [width]="512" [scale]="100" [errorCorrectionLevel]="'H'"></qrcode>
+                      <qrcode [qrdata]="qrdata" [width]="500"  [errorCorrectionLevel]="'M'" [elementType]="'canvas'"></qrcode>
+
+                      <img [src]="infoqr">
                     </ng-container>
                 </ng-container>
                 <ng-template #notCompleted>

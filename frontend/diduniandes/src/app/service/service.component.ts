@@ -10,10 +10,11 @@ export class ServiceComponent implements OnInit {
    stateServ = 'list';
    @Input()
    user:any;
+   infoqr: any;
    stepperState:number = 1;
    public qrdata: string = "";
    proxyHeroku = "https://radiant-harbor-95836.herokuapp.com/"
-   base_url = this.proxyHeroku+'https://17d6-186-84-135-86.ngrok.io';
+   base_url = 'localhost:8080';
    completed: boolean = true;
 
   constructor(
@@ -34,8 +35,8 @@ export class ServiceComponent implements OnInit {
 
   async createDataService(caseOfUse: string) {
     this.completed = false;
-    console.log(this.base_url + '/api/sign-in');
-    this.http.get<any>(this.base_url + '/api/sign-in', {params: {caseOfUse}}).pipe(
+    console.log( '/api/sign-in');
+    this.http.get<any>('https://896d-186-154-33-227.ngrok.io' + '/api/sign-in', {params: {caseOfUse}}).pipe(
       take(1),
       map((response) => {
         console.log(response);
