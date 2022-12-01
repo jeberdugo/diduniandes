@@ -29,10 +29,6 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
   constructor() {}
   ngOnInit(): void {
-    let date: Date = new Date();
-    let id:string = ""+ date.getFullYear() + date.getMonth() + date.getDay() + date.getHours() + date.getMinutes() + date.getSeconds()+(Math.floor(Math.random() * (9999-1000))+1000);
-    this.id = parseInt(id);
-    sessionStorage.setItem("sessionId", ""+this.id)
-    console.log(sessionStorage.getItem("sessionId"));
+
   }
 }
