@@ -79,7 +79,7 @@
       <div class="col-12">
         <p class="info">
           Estas listo para abrir tu cuenta de ahorros a través de tu identidad
-          digital descentralizada
+          digital descentralizada. A continuación:
         </p>
       </div>
     </div>
@@ -238,7 +238,7 @@
                       <div class="line"></div>
                     </div>
 
-                    <div class="content">Autoriza el uso de tus datos</div>
+                    <div class="content">Recibe la confirmación del banco</div>
                   </div>
 
                   <!-- regular -->
@@ -248,16 +248,9 @@
                       <div class="line"></div>
                     </div>
 
-                    <div class="content">Recibe la confirmación del banco</div>
-                  </div>
-                  <div class="step" [ngClass]="{ active: stepperState === 5, completed: stepperState > 5  }">
-                    <div class="v-stepper">
-                      <div class="circle">5</div>
-                      <div class="line"></div>
-                    </div>
-
                     <div class="content">Recibe tu tarjeta débito</div>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -280,17 +273,16 @@
                 </div>
               </div>
               <div class="row center">
-                <button (click)="createDataService('crearCuentaAhorros')"> Generar prueba con código QR  </button>
                 <ng-container *ngIf = "completed; else notCompleted">
                     <ng-container *ngIf="qrdata !== 'Initial QR code data string'">
-                      <qrcode [qrdata]="qrdata" [width]="500"  [errorCorrectionLevel]="'M'" [elementType]="'canvas'"></qrcode>
-
-                      <img [src]="infoqr">
+                      <qrcode [qrdata]="qrdata" [width]="300"  [errorCorrectionLevel]="'M'" [elementType]="'canvas'"></qrcode>
                     </ng-container>
                 </ng-container>
-                <ng-template #notCompleted>
+                <div class="centere">
+                <ng-template  #notCompleted>
                   <div class="animationloading"></div>
                 </ng-template>
+              </div>
               </div>
               <div class="row">
                 <div class="col-12 center">

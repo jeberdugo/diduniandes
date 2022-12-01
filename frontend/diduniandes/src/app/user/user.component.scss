@@ -71,12 +71,20 @@ button{
     border-radius: 10px;
   }
 
+  .qr{
+    margin-top: 5% 5%;
+
+    height: auto;
+    max-width: 300px;
+  }
+
   .icon{
     height: auto;
     width: 100%;
-    max-width: 70px;
-    max-height: 70px;
+    max-width: 100px;
+    max-height: 100px;
     border-radius: 10px;
+  padding: 10px 20px;
   }
 
   button:hover{

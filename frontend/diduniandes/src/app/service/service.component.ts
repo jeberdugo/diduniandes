@@ -31,12 +31,15 @@ export class ServiceComponent implements OnInit {
 
   changeStateServ(state: string) {
     this.stateServ = state;
+    if(this.stateServ === 'cuentaAhorros2'){
+      this.createDataService('crearCuentaAhorros');
+    }
   }
 
   async createDataService(caseOfUse: string) {
     this.completed = false;
     console.log( '/api/sign-in');
-    this.http.get<any>('https://896d-186-154-33-227.ngrok.io' + '/api/sign-in', {params: {caseOfUse}}).pipe(
+    this.http.get<any>( '/api/sign-in', {params: {caseOfUse}}).pipe(
       take(1),
       map((response) => {
         console.log(response);

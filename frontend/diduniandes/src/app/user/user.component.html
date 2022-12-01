@@ -51,7 +51,7 @@
               <div class="row">
                 <div class="col-12">
                   <img
-                    src="assets/user1.png"
+                    src="assets/user2.png"
                     class="icon center center-vertical"
                     alt=""
                   />
@@ -76,7 +76,7 @@
               <div class="row">
                 <div class="col-12">
                   <img
-                    src="assets/user1.png"
+                    src="assets/user3.png"
                     class="icon center center-vertical"
                     alt=""
                   />
@@ -99,7 +99,7 @@
     </div>
     <div class="row">
       <div class="col-12 center center-vertical">
-        <button type="button" class="btn btn-warning" (click)="changeStateUser('qr')">
+        <button type="button" [disabled]="user === null" class="btn btn-warning" (click)="changeStateUser('qr')">
           Siguiente
         </button>
       </div>
@@ -109,20 +109,29 @@
     <div class="row">
         <div class="col-12">
           <p class="info">
-            Escanea el código QR a continuación para asignarte las debidas identidades de tu usuario en tu billetera
+            Escanea los dos códigos QR a continuación para asignarte las debidas identidades de tu usuario en tu billetera. Es importante escanear ambos codigos para tener la identidad completa y no tener incovenientes en pasos posteriores.
           </p>
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-6">
             <div class="center center-vertical">
-                <img src="assets/qr1.png" alt="" srcset="">
+                <img class="qr" *ngIf="user === 1"  src="assets/qr11.png" alt="" srcset="">
+                <img class="qr" *ngIf="user === 2"  src="assets/qr21.png" alt="" srcset="">
+                <img class="qr" *ngIf="user === 3"  src="assets/qr31.png" alt="" srcset="">
             </div>
         </div>
+        <div class="col-6">
+          <div class="center center-vertical">
+              <img class="qr" *ngIf="user === 1"  src="assets/qr12.png" alt="" srcset="">
+              <img class="qr" *ngIf="user === 2"  src="assets/qr22.png" alt="" srcset="">
+              <img class="qr" *ngIf="user === 3"  src="assets/qr32.png" alt="" srcset="">
+          </div>
+      </div>
       </div>
     <div class="row">
         <div class="col-12 center center-vertical">
-          <button type="button" class="btn btn-warning" (click)="continue()" mat-button matStepperNext>
+          <button type="button" class="btn btn-warning"  (click)="continue()" mat-button matStepperNext>
             Siguiente
           </button>
         </div>
