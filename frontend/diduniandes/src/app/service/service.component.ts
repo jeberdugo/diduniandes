@@ -14,7 +14,7 @@ export class ServiceComponent implements OnInit {
    stepperState:number = 1;
    public qrdata: string = "";
    proxyHeroku = "https://radiant-harbor-95836.herokuapp.com/"
-   base_url = 'localhost:8080';
+   base_url = this.proxyHeroku+'https://610a-186-84-135-86.ngrok.io';
    completed: boolean = true;
 
   constructor(
