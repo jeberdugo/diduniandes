@@ -16,7 +16,7 @@ sequelize.sync().then(() => console.log("db is ready"));
 const app = express();
 const port = process.env.PORT || 8080;
 
-const originsAllowed = ["localhost:3000", "http://localhost:8080", "http://localhost:8090"];
+const originsAllowed = ["localhost:3000", "http://localhost:8080", "http://localhost:8090", "https://diduniandes.web.app/"];
 app.use(cors({ origin: originsAllowed }));
 app.use(express.static('/client'));
 
@@ -56,8 +56,7 @@ async function GetAuthRequest(req, res) {
   const caseOfUse = req.originalUrl.split("=")[1];
   console.log("Params:", caseOfUse);
   // Audience is verifier id
-  const proxyHeroku = "https://radiant-harbor-95836.herokuapp.com/";
-  const hostUrl =  "https://serverbancol.herokuapp.com";
+  const hostUrl =  "https://21ea-2803-1800-1106-198b-ec1e-5f03-6e3c-51b3.ngrok.io";
   let idRequest = createId();
   const sessionId = idRequest;
   const callbackURL = "/api/callback";
@@ -208,51 +207,6 @@ async function GetAuthRequest(req, res) {
     request.body.scope = [...scope, proofRequest];
   }
 
-  /*const proofRequest  = {
-		id: 1, // request id
-		circuit_id: 'credentialAtomicQuerySig',
-		rules: {
-			query: {
-			allowedIssuers: ['*'], // ID of the trusted issuer
-			schema: {
-				type: 'PolygonDAOMember',
-				url: 'https://schema.polygonid.com/jsonld/dao.json-ld',
-			}
-			},
-			req: {
-				role: {
-				  $eq: 1, // the role must be 1
-				},
-			  },
-		},
-		};
-	
-	console.log('ProofRequest created');
-	const scope = request.body.scope ?? [];
-	request.body.scope = [...scope, proofRequest];*/
-
-  //Credit card
-  /*const proofRequest = {
-		id: 1, // request id
-		circuit_id: 'credentialAtomicQuerySig',
-		rules: {
-			query: {
-			allowedIssuers: ['*'],
-			schema: {
-				type: 'EmployeeData',
-				url: 'https://schema.com/...employeedata',
-			},
-			req: {
-				monthlySalary: {
-				$gt: 1000, // monthlySalary must be over $1000
-				},
-			},
-			},
-		},
-		};
-	const scope = request.body.scope ?? [];
-	request.body.scope = [...scope, proofRequest];*/
-
   // Store auth request in map associated with session ID
   requestMap.set(`${sessionId}`, request);
   console.log(res);
@@ -284,10 +238,8 @@ async function Callback(req, res) {
   console.log("Done");
 
   // Add Polygon Mumbai RPC node endpoint - needed to read on-chain state and identity state contract address
-  const ethStateResolver = new resolver.EthStateResolver(
-    "https://polygon-mumbai.g.alchemy.com/v2/NEJA3Eag1uULw6Gdq7b6f2Fe9Nk5G_mE",
-    "0x251dcd7De5f5c8dc0b83F356970F49346692447B"
-  );
+	const ethStateResolver = new resolver.EthStateResolver('https://rpc-mumbai.maticvigil.com/v1/8bf2bbf4a04d8f93c08d0ee11d624b1997ae6ad8', 
+	'0x46Fd04eEa588a3EA7e9F055dd691C688c4148ab3');
 
   console.log("Done ethStateResolver");
   console.log(ethStateResolver);
