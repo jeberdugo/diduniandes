@@ -30,12 +30,19 @@ export class ServiceComponent implements OnInit {
 
   changeStateServ(state: string) {
     this.stateServ = state;
+    if(this.stateServ === 'cuentaAhorros2'){
+      this.createDataService('crearCuentaAhorros');
+    }
   }
 
   async createDataService(caseOfUse: string) {
     this.completed = false;
     console.log( '/api/sign-in');
+<<<<<<< HEAD
     this.http.get<any>(this.base_url + '/api/sign-in', {params: {caseOfUse}}).pipe(
+=======
+    this.http.get<any>( '/api/sign-in', {params: {caseOfUse}}).pipe(
+>>>>>>> 4f883bc731d44b1eca119979f2582418db4bc980
       take(1),
       map((response) => {
         console.log(response);
