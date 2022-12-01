@@ -17,7 +17,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 let idRequest;
 
-const originsAllowed = ["http://localhost:4200", "http://localhost:8080/", "http://localhost:8090/", "https://diduniandes.web.app/"];
+const originsAllowed = ["http://localhost:4200", "http://localhost:8080", "http://localhost:8090", "https://diduniandes.web.app"];
 app.use(cors({ origin: originsAllowed }));
 app.use(express.static('/client'));
 
