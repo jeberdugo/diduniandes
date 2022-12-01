@@ -15,8 +15,9 @@ sequelize.sync().then(() => console.log("db is ready"));
 
 const app = express();
 const port = process.env.PORT || 8080;
+let idRequest;
 
-const originsAllowed = ["localhost:3000", "http://localhost:8080", "http://localhost:8090", "https://diduniandes.web.app/"];
+const originsAllowed = ["http://localhost:4200", "http://localhost:8080/", "http://localhost:8090/", "https://diduniandes.web.app/"];
 app.use(cors({ origin: originsAllowed }));
 app.use(express.static('/client'));
 
@@ -57,8 +58,9 @@ async function GetAuthRequest(req, res) {
   console.log("Params:", caseOfUse);
   // Audience is verifier id
   const hostUrl =  "https://21ea-2803-1800-1106-198b-ec1e-5f03-6e3c-51b3.ngrok.io";
-  let idRequest = createId();
+  idRequest = createId();
   const sessionId = idRequest;
+  console.log(sessionId);
   const callbackURL = "/api/callback";
   const audience = "117fsb3hktLw8ie9E6Qj9kfgRHXhLxq9XYaedsJdGU";
 
