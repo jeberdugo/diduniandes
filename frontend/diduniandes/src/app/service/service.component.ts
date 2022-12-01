@@ -16,8 +16,7 @@ export class ServiceComponent implements OnInit {
    reqState = 0;
    stepperState:number = 1;
    public qrdata: string = "";
-   proxyHeroku = "https://radiant-harbor-95836.herokuapp.com/"
-   base_url = this.proxyHeroku+'https://610a-186-84-135-86.ngrok.io';
+   base_url = 'https://21ea-2803-1800-1106-198b-ec1e-5f03-6e3c-51b3.ngrok.io';
    sessionId = "-1";
    completed: boolean = true;
    completed2: boolean = true;
@@ -43,7 +42,8 @@ export class ServiceComponent implements OnInit {
 
   async createDataService(caseOfUse: string) {
     this.completed = false;
-    this.http.get<any>( '/api/sign-in', {params: {caseOfUse}}).pipe(
+    console.log( '/api/sign-in');
+    this.http.get<any>( this.base_url + '/api/sign-in', {params: {caseOfUse}}).pipe(
       take(1),
       map((response) => {
         let url = JSON.stringify(response.body.callbackUrl).split('=')[1];
