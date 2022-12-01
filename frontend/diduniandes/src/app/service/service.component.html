@@ -218,7 +218,7 @@
                       <div class="line"></div>
                     </div>
 
-                    <div class="content">Conéctate con el banco</div>
+                    <div class="content">Presenta tus documentos</div>
                   </div>
 
                   <!-- active -->
@@ -228,7 +228,7 @@
                       <div class="line"></div>
                     </div>
 
-                    <div class="content">Presenta tu cédula</div>
+                    <div class="content">Recibe la confirmación del banco</div>
                   </div>
 
                   <!-- empty -->
@@ -238,18 +238,9 @@
                       <div class="line"></div>
                     </div>
 
-                    <div class="content">Recibe la confirmación del banco</div>
-                  </div>
-
-                  <!-- regular -->
-                  <div class="step" [ngClass]="{ active: stepperState === 4, completed: stepperState > 4  }">
-                    <div class="v-stepper">
-                      <div class="circle">4</div>
-                      <div class="line"></div>
-                    </div>
-
                     <div class="content">Recibe tu tarjeta débito</div>
                   </div>
+
 
                 </div>
               </div>
@@ -267,15 +258,22 @@
               <div class="row">
                 <div class="col-12">
                   <p class="info">
-                    Para crear una conexión segura con el banco, debes escanear el
-                    siguiente código
+                    Para crear una conexión segura con el banco, debes iniciar la conexión con el banco y escanear el
+                    código que se genere.
                   </p>
+                </div>
+              </div>
+              <div class="row" *ngIf="qrdata === 'Initial QR code data string'">
+                <div class="col-12 center">
+                  <button type="button" class="btn btn-warning" (click)="createDataService('crearCuentaAhorros')">Iniciar conexion</button>
                 </div>
               </div>
               <div class="row center">
                 <ng-container *ngIf = "completed; else notCompleted">
                     <ng-container *ngIf="qrdata !== 'Initial QR code data string'">
                       <qrcode [qrdata]="qrdata" [width]="300"  [errorCorrectionLevel]="'M'" [elementType]="'canvas'"></qrcode>
+
+                      
                     </ng-container>
                 </ng-container>
                 <div class="centere">
@@ -286,7 +284,6 @@
               </div>
               <div class="row">
                 <div class="col-12 center">
-                  <button type="button" class="btn btn-warning" (click)="changeStepperState(2)">Siguiente</button>
                 </div>
               </div>
             </div>
@@ -294,14 +291,28 @@
               <div class="row">
                 <div class="col-12">
                   <p class="info">
-                    Para crear una conexión segura ebes escanear el
-                    siguiente código
+                    Gracias por escanear el código, ahora debes esperar la confirmación del banco.
                   </p>
                 </div>
               </div>
+
+              <div class="row center">
+                <ng-container *ngIf = "completed2; else notCompleted2">
+                    <ng-container>
+                     
+                    </ng-container>
+                </ng-container>
+                <div class="centere">
+                <ng-template  #notCompleted2>
+                  <div class="animationloading"></div>
+                </ng-template>
+              </div>
+              </div>
+
+
               <div class="row">
                 <div class="col-12 center">
-                  <button type="button" class="btn btn-warning" (click)="changeStepperState(3)">Siguiente</button>
+                  <button type="button" class="btn btn-warning" (click)="changeStepperState(3)">Recibir mi tarjeta</button>
                 </div>
               </div>
             </div>
